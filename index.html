@@ -3,69 +3,605 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>صفحتي الأولى</title>
+
+  <meta
+    name="description"
+    content="ملزمتي الدراسي تطبيق تعليمي لطلاب الثالث المتوسط والسادس الإعدادي، يسهّل تنظيم الدراسة والوصول إلى محتوى الصف."
+  >
+
+  <meta name="theme-color" content="#142b4a">
+  <title>ملزمتي الدراسي | للثالث المتوسط والسادس الإعدادي</title>
 
   <style>
+    :root {
+      --navy: #142b4a;
+      --blue: #2859c5;
+      --blue-light: #eaf0ff;
+      --teal: #138a78;
+      --text: #263449;
+      --muted: #69778c;
+      --page: #f7f9fc;
+      --white: #fff;
+      --border: #e4eaf2;
+      --shadow: 0 18px 50px rgba(24, 48, 82, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-  font-family: Arial, sans-serif;
-  background-color: #f6f2fa; /* لون خلفية الصفحة */
-  color: #333333;            /* لون الفقرات والنص العادي */
-  text-align: center;
-  margin: 40px;
-}
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: var(--text);
+      background: var(--page);
+      line-height: 1.8;
+    }
 
-h1 {
-  color: #aa1e17; /* العنوان الرئيسي */
-}
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-h2 {
-  color: #1769aa; /* عنوان «عنّي» */
-}
+    .container {
+      width: min(1100px, calc(100% - 40px));
+      margin-inline: auto;
+    }
 
-a {
-  color: #d30035; /* الرابط */
-  text-decoration: none;
-}
+    .site-header {
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid var(--border);
+    }
 
-a:hover {
-  color: #7a0020; /* لون الرابط عند تمرير المؤشر */
-  text-decoration: underline;
-}
-.gallery img {
-  width: 500px;
-  height: 300px;
-  object-fit: cover;
-  border-radius: 300px;
-}
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      color: var(--navy);
+      font-size: 19px;
+      font-weight: 800;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      color: var(--white);
+      background: var(--blue);
+      border-radius: 14px;
+      font-size: 22px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .nav-links a:hover {
+      color: var(--blue);
+    }
+
+    .button {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 19px;
+      border: 0;
+      border-radius: 12px;
+      font: inherit;
+      font-weight: 700;
+    }
+
+    .button-primary {
+      color: var(--white);
+      background: var(--blue);
+      box-shadow: 0 8px 20px rgba(40, 89, 197, 0.22);
+    }
+
+    .button-secondary {
+      color: var(--navy);
+      background: var(--white);
+      border: 1px solid var(--border);
+    }
+
+    .hero {
+      padding: 76px 0 80px;
+      background:
+        radial-gradient(circle at 9% 18%, rgba(19, 138, 120, 0.1), transparent 28%),
+        radial-gradient(circle at 92% 12%, rgba(40, 89, 197, 0.12), transparent 30%),
+        var(--page);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 55px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 15px;
+      padding: 6px 13px;
+      color: #147765;
+      background: #e4f6f1;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .hero h1 {
+      max-width: 640px;
+      margin: 0;
+      color: var(--navy);
+      font-size: clamp(37px, 5vw, 58px);
+      line-height: 1.3;
+    }
+
+    .hero h1 span {
+      color: var(--blue);
+    }
+
+    .hero-copy {
+      max-width: 590px;
+      margin: 19px 0 26px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .hero-art {
+      position: relative;
+      min-height: 330px;
+      display: grid;
+      place-items: center;
+    }
+
+    .art-glow {
+      position: absolute;
+      width: 270px;
+      height: 270px;
+      background: #e5edff;
+      border-radius: 50%;
+    }
+
+    .app-card {
+      position: relative;
+      width: min(330px, 90%);
+      padding: 27px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      transform: rotate(-3deg);
+    }
+
+    .app-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+
+    .app-icon {
+      width: 47px;
+      height: 47px;
+      display: grid;
+      place-items: center;
+      color: var(--blue);
+      background: var(--blue-light);
+      border-radius: 15px;
+      font-size: 24px;
+    }
+
+    .app-card h2 {
+      margin: 0;
+      color: var(--navy);
+      font-size: 25px;
+    }
+
+    .app-card p {
+      margin: 8px 0 20px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .grade-chip {
+      display: inline-block;
+      margin: 4px;
+      padding: 8px 12px;
+      color: var(--navy);
+      background: #f1f4f9;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .section {
+      padding: 72px 0;
+    }
+
+    .section-heading {
+      max-width: 660px;
+      margin: 0 auto 34px;
+      text-align: center;
+    }
+
+    .section-heading h2 {
+      margin: 0 0 9px;
+      color: var(--navy);
+      font-size: clamp(27px, 4vw, 38px);
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .grade-grid,
+    .feature-grid,
+    .download-grid {
+      display: grid;
+      gap: 19px;
+    }
+
+    .grade-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .feature-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .download-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .card {
+      padding: 26px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 19px;
+      box-shadow: 0 8px 28px rgba(24, 48, 82, 0.04);
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      color: var(--navy);
+      font-size: 20px;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .grade-number {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 16px;
+      color: var(--blue);
+      background: var(--blue-light);
+      border-radius: 15px;
+      font-size: 19px;
+      font-weight: 800;
+    }
+
+    .features {
+      background: #eef3fb;
+    }
+
+    .feature-icon {
+      margin-bottom: 10px;
+      font-size: 28px;
+    }
+
+    .download-card {
+      text-align: center;
+    }
+
+    .download-card .button {
+      width: 100%;
+      margin-top: 18px;
+    }
+
+    .button-soon {
+      color: #738096;
+      background: #eef1f5;
+      cursor: not-allowed;
+    }
+
+    .about-panel {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 28px;
+      padding: 32px;
+      color: var(--white);
+      background: var(--navy);
+      border-radius: 23px;
+    }
+
+    .about-panel h2 {
+      margin: 0 0 8px;
+      font-size: 29px;
+    }
+
+    .about-panel p {
+      margin: 0;
+      color: #d5deeb;
+    }
+
+    .about-tag {
+      padding: 11px 15px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .site-footer {
+      padding: 23px 0;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      font-size: 14px;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    @media (max-width: 760px) {
+      .nav {
+        min-height: 68px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .nav .button {
+        min-height: 40px;
+        padding: 8px 12px;
+        font-size: 13px;
+      }
+
+      .hero {
+        padding: 54px 0;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .hero-copy {
+        font-size: 16px;
+      }
+
+      .hero-art {
+        min-height: 280px;
+      }
+
+      .grade-grid,
+      .feature-grid,
+      .download-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        padding: 54px 0;
+      }
+
+      .about-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .about-tag {
+        white-space: normal;
+        text-align: center;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    }
   </style>
 </head>
+
 <body>
-  <header>
-  <h1>موقع إلكتروني</h1>
-</header>
+  <header class="site-header">
+    <nav class="nav container" aria-label="القائمة الرئيسية">
+      <a class="brand" href="#home">
+        <span class="brand-mark" aria-hidden="true">م</span>
+        <span>ملزمتي الدراسي</span>
+      </a>
 
-<main>
-  <section>
-    <div class="gallery">
-      <img src="photo.jpg" alt="صورة لحديقة">
-      <p>تصوير</p>
-    </div>
+      <div class="nav-links">
+        <a href="#grades">الصفوف</a>
+        <a href="#features">عن التطبيق</a>
+        <a href="#download">التنزيل</a>
+      </div>
 
-    <div class="gallery">
-      <img src="photo1.jpg" alt="صورة ثانية">
-      <p>تسويق</p>
-    </div>
+      <a class="button button-secondary" href="#download">منصات التطبيق</a>
+    </nav>
+  </header>
 
-    <div class="gallery">
-      <img src="photo2.jpg" alt="صورة ثالثة">
-      <p>تصوير احترافي</p>
-    </div>
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-grid container">
+        <div>
+          <span class="eyebrow">للثالث المتوسط والسادس الإعدادي</span>
 
-    <div class="gallery">
-      <img src="photo3.jpg" alt="صورة رابعة">
-      <p>iPhone</p>
+          <h1>
+            تعلّم وراجع
+            <span>بترتيب أوضح</span>
+          </h1>
+
+          <p class="hero-copy">
+            ملزمتي الدراسي تطبيق تعليمي مخصص لطلاب الثالث المتوسط والسادس الإعدادي.
+            يجمع تجربة الدراسة والمراجعة في واجهة سهلة، لتصل إلى ما تحتاجه بوضوح.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button-primary" href="#download">تعرّف على منصات التطبيق</a>
+            <a class="button button-secondary" href="#grades">الصفوف المستهدفة</a>
+          </div>
+        </div>
+
+        <div class="hero-art" aria-label="تصميم توضيحي لتطبيق ملزمتي الدراسي">
+          <div class="art-glow"></div>
+
+          <div class="app-card">
+            <div class="app-card-top">
+              <strong>مساحتك الدراسية</strong>
+              <span class="app-icon" aria-hidden="true">✎</span>
+            </div>
+
+            <h2>ملزمتي الدراسي</h2>
+            <p>محتوى مرتب لرحلتك الدراسية.</p>
+
+            <span class="grade-chip">الثالث المتوسط</span>
+            <span class="grade-chip">السادس الإعدادي</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container" id="grades">
+      <div class="section-heading">
+        <h2>مصمم لصفّك الدراسي</h2>
+        <p>تجربة تعليمية موجهة لطلاب مرحلتين دراسيتين مهمتين.</p>
+      </div>
+
+      <div class="grade-grid">
+        <article class="card">
+          <div class="grade-number" aria-hidden="true">03</div>
+          <h3>الثالث المتوسط</h3>
+          <p>مساحة مخصصة لمتابعة الدراسة والمراجعة لطلاب الثالث المتوسط.</p>
+        </article>
+
+        <article class="card">
+          <div class="grade-number" aria-hidden="true">06</div>
+          <h3>السادس الإعدادي</h3>
+          <p>مساحة مخصصة لمتابعة الدراسة والمراجعة لطلاب السادس الإعدادي.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section features" id="features">
+      <div class="container">
+        <div class="section-heading">
+          <h2>تجربة دراسية أسهل</h2>
+          <p>واجهة واضحة تساعدك على التركيز والوصول إلى قسمك الدراسي بسهولة.</p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="card">
+            <div class="feature-icon" aria-hidden="true">📚</div>
+            <h3>مخصص للمرحلة</h3>
+            <p>اختر صفك لتجد تجربة مصممة لاحتياجات مرحلتك الدراسية.</p>
+          </article>
+
+          <article class="card">
+            <div class="feature-icon" aria-hidden="true">🗂️</div>
+            <h3>تنظيم واضح</h3>
+            <p>ترتيب يساعدك على الوصول إلى محتواك الدراسي بسهولة.</p>
+          </article>
+
+          <article class="card">
+            <div class="feature-icon" aria-hidden="true">💻</div>
+            <h3>على أجهزتك</h3>
+            <p>روابط التطبيق ستكون متاحة لمنصات الهاتف والكمبيوتر.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container" id="download">
+      <div class="section-heading">
+        <h2>حمّل ملزمتي الدراسي</h2>
+        <p>اختر المنصة المناسبة لجهازك. ستُفعّل روابط التنزيل عند جاهزيتها.</p>
+      </div>
+
+      <div class="download-grid">
+        <article class="card download-card">
+          <div class="feature-icon" aria-hidden="true">🤖</div>
+          <h3>Android</h3>
+          <p>للهواتف والأجهزة اللوحية.</p>
+          <span class="button button-soon" aria-disabled="true">قريبًا</span>
+        </article>
+
+        <article class="card download-card">
+          <div class="feature-icon" aria-hidden="true">📱</div>
+          <h3>iPhone</h3>
+          <p>لأجهزة iPhone وiPad.</p>
+          <span class="button button-soon" aria-disabled="true">قريبًا</span>
+        </article>
+
+        <article class="card download-card">
+          <div class="feature-icon" aria-hidden="true">🖥️</div>
+          <h3>Windows</h3>
+          <p>لأجهزة الكمبيوتر.</p>
+          <span class="button button-soon" aria-disabled="true">قريبًا</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="section container" id="about">
+      <div class="about-panel">
+        <div>
+          <h2>ملزمتي الدراسي</h2>
+          <p>
+            تطبيق تعليمي لطلاب الثالث المتوسط والسادس الإعدادي،
+            يهدف إلى جعل الدراسة والمراجعة أكثر تنظيمًا وسهولة.
+          </p>
+        </div>
+
+        <div class="about-tag">خطوة أوضح نحو هدفك الدراسي</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content container">
+      <span>ملزمتي الدراسي</span>
+      <span>للثالث المتوسط والسادس الإعدادي</span>
     </div>
-  </section>
-</main>
+  </footer>
 </body>
 </html>
